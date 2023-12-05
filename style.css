@@ -1,18 +1,51 @@
 input.cell{
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
     text-align: center;
     vertical-align: middle;
     padding: 0px;
     border-width: 1px;
+    border-radius: 3px;
 }
 
-div.row{
-    
-    height: 30px;
+#main{
+    display: flex;
+    flex-flow: column;
+
+    align-items: center;
+
+    gap: 30px;
+}
+#main > input{
+    width: 100px;
+    height: 60px;
 }
 
-div.sudoku_input{
-    text-align : center;
+.sudoku-rows{
+    display:flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 영역별로 배경 회색으로 칠해줌 */
+.row:nth-child(n + 4):nth-child(-n + 6) input.cell:nth-child(n + 4):nth-child(-n + 6),
+.row:nth-child(n + 1):nth-child(-n + 3) input.cell:nth-child(n + 1):nth-child(-n + 3),
+.row:nth-child(n + 1):nth-child(-n + 3) input.cell:nth-child(n + 7):nth-child(-n + 9),
+.row:nth-child(n + 7):nth-child(-n + 9) input.cell:nth-child(n + 1):nth-child(-n + 3),
+.row:nth-child(n + 7):nth-child(-n + 9) input.cell:nth-child(n + 7):nth-child(-n + 9){
+    background-color: #BFBFBF;
+}
+
+/* unable 설정 */
+.unable{
+    text-align: center;
 }

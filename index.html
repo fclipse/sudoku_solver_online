@@ -4,121 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <link rel="stylesheet" href="style.css">
     <div>
         <h1>Sudoku Solver</h1>
-        <h3>Made by Why-15</h3>
+        <h3>Made by Hansj</h3>
     </div>
     <!--스도쿠 입력 몸체-->
-    <div class="sudoku_input">
-        <div class="row">
-            <input class="cell" id="00">
-            <input class="cell" id="01">
-            <input class="cell" id="02">
-            <input class="cell" id="03">
-            <input class="cell" id="04">
-            <input class="cell" id="05">
-            <input class="cell" id="06">
-            <input class="cell" id="07">
-            <input class="cell" id="08">
-        </div>
-        <div class="row">
-            <input class="cell" id="10">
-            <input class="cell" id="11">
-            <input class="cell" id="12">
-            <input class="cell" id="13">
-            <input class="cell" id="14">
-            <input class="cell" id="15">
-            <input class="cell" id="16">
-            <input class="cell" id="17">
-            <input class="cell" id="18">
-        </div>
-        <div class="row">
-            <input class="cell" id="20">
-            <input class="cell" id="21">
-            <input class="cell" id="22">
-            <input class="cell" id="23">
-            <input class="cell" id="24">
-            <input class="cell" id="25">
-            <input class="cell" id="26">
-            <input class="cell" id="27">
-            <input class="cell" id="28">
-        </div>
-        <div class="row">
-            <input class="cell" id="30">
-            <input class="cell" id="31">
-            <input class="cell" id="32">
-            <input class="cell" id="33">
-            <input class="cell" id="34">
-            <input class="cell" id="35">
-            <input class="cell" id="36">
-            <input class="cell" id="37">
-            <input class="cell" id="38">
-        </div>
-        <div class="row">
-            <input class="cell" id="40">
-            <input class="cell" id="41">
-            <input class="cell" id="42">
-            <input class="cell" id="43">
-            <input class="cell" id="44">
-            <input class="cell" id="45">
-            <input class="cell" id="46">
-            <input class="cell" id="47">
-            <input class="cell" id="48">
-        </div>
-        <div class="row">
-            <input class="cell" id="50">
-            <input class="cell" id="51">
-            <input class="cell" id="52">
-            <input class="cell" id="53">
-            <input class="cell" id="54">
-            <input class="cell" id="55">
-            <input class="cell" id="56">
-            <input class="cell" id="57">
-            <input class="cell" id="58">
-        </div>
-        <div class="row">
-            <input class="cell" id="60">
-            <input class="cell" id="61">
-            <input class="cell" id="62">
-            <input class="cell" id="63">
-            <input class="cell" id="64">
-            <input class="cell" id="65">
-            <input class="cell" id="66">
-            <input class="cell" id="67">
-            <input class="cell" id="68">
-        </div>
-        <div class="row">
-            <input class="cell" id="70">
-            <input class="cell" id="71">
-            <input class="cell" id="72">
-            <input class="cell" id="73">
-            <input class="cell" id="74">
-            <input class="cell" id="75">
-            <input class="cell" id="76">
-            <input class="cell" id="77">
-            <input class="cell" id="78">
-        </div>
-        <div class="row">
-            <input class="cell" id="80">
-            <input class="cell" id="81">
-            <input class="cell" id="82">
-            <input class="cell" id="83">
-            <input class="cell" id="84">
-            <input class="cell" id="85">
-            <input class="cell" id="86">
-            <input class="cell" id="87">
-            <input class="cell" id="88">
-        </div>
-    </div>
+    
     <!--제출 버튼-->
-    <div style="text-align:center">
-        <button >Magic</button>
+    <div id="main">
+        <input type="color" value="Solve!">
+
+        <div class="sudoku-rows"></div>
+
+        <input id="solve" type="button" value="Solve!">
+        <div id="answer-area"></div>
     </div>
+
     <!--소스 파일-->
+    <script src="screen.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
