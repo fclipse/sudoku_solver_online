@@ -2,7 +2,11 @@
 
 made by Hansj
 
-## 사용하는 법
+## 사용하는 법 - Online
+
+[스도쿠 풀러 가기 > 링크 클릭](https://fclipse.tistory.com/69)
+
+## 사용하는 법 - 로컬
 
 1. repo를 다운받는다
 2. `index.html`을 연다
