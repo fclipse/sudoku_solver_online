@@ -28,8 +28,8 @@
         </div>
         <div id="answer-area"></div>
     </div>
-    <style>
-        input.cell{
+<style>
+    input.cell{
     width: 40px;
     height: 40px;
     font-size: 25px;
@@ -52,7 +52,7 @@
     width: 100px;
     height: 60px;
 }
-
+/* sudoku 영역 row, column 설정 */
 .sudoku-rows{
     display:flex;
     flex-flow: column;
@@ -65,6 +65,22 @@
     flex-flow: row;
     justify-content: center;
     align-items: center;
+}
+
+.cell{
+    text-align: center;
+}
+/* 입력 칸 옆에 증감 화살표 제거 */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /* 영역별로 배경 회색으로 칠해줌 */
@@ -97,11 +113,9 @@
     flex-flow: column;
     align-items: center;
 }
-    </style>
-    <!--소스 파일-->
-    <script>
-        // screen.js
-        // 스도쿠 입력칸 생성
+</style>
+<script>
+    // 스도쿠 입력칸 생성
 const rows = document.querySelector('.sudoku-rows');
 
 makeSudokuTiles(rows);
@@ -116,9 +130,9 @@ function makeSudokuTiles(parentDiv){
         for(let j = 0; j < 9; j++){
             const colDiv = document.createElement('input');
             colDiv.classList.add('cell');
-            colDiv.type = 'text';
+            colDiv.type = 'number';
             colDiv.id = `col-${j + 1}`;
-            colDiv.maxLength = '1';
+            colDiv.maxLength = 1;
             rowDiv.appendChild(colDiv);
         }
         parentDiv.appendChild(rowDiv);
@@ -146,6 +160,8 @@ inputCellList.forEach((cell, index)=>{
             
             // 추출한 값으로 input 요소의 값을 업데이트
             event.target.value = sanitizedValue;
+
+            // cell.value = event.target.value;
         }
 
         // 입력시 다음 cell로 focus
@@ -170,8 +186,6 @@ inputCellList.forEach((cell, index)=>{
         }
     });
 });
-
-// loadFile.js
 // input 요소 가져오기
 const fileInput = document.getElementById('fileInput');
 
@@ -209,8 +223,6 @@ function parseCSV(csvData) {
         
     });
 }
-
-// main.js
 // global variables
 const len = 9;
 const blen = 3; // 블록 길이 설정
@@ -341,6 +353,6 @@ document.querySelector('#clear').addEventListener('click', ()=>{
         cell.value = ``;
     });
 });
-    </script>
+</script>
 </body>
 </html>
