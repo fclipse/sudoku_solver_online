@@ -17,7 +17,7 @@ input.cell{
 
     gap: 30px;
 }
-#solve{
+#solve, #clear{
     width: 100px;
     height: 60px;
 }
@@ -37,15 +37,32 @@ input.cell{
 }
 
 /* 영역별로 배경 회색으로 칠해줌 */
-.row:nth-child(n + 4):nth-child(-n + 6) input.cell:nth-child(n + 4):nth-child(-n + 6),
-.row:nth-child(n + 1):nth-child(-n + 3) input.cell:nth-child(n + 1):nth-child(-n + 3),
-.row:nth-child(n + 1):nth-child(-n + 3) input.cell:nth-child(n + 7):nth-child(-n + 9),
-.row:nth-child(n + 7):nth-child(-n + 9) input.cell:nth-child(n + 1):nth-child(-n + 3),
-.row:nth-child(n + 7):nth-child(-n + 9) input.cell:nth-child(n + 7):nth-child(-n + 9){
+.sudoku-rows > .row:nth-child(n + 1):nth-child(-n + 3) .cell:nth-child(n + 1):nth-child(-n + 3),
+.sudoku-rows > .row:nth-child(n + 1):nth-child(-n + 3) .cell:nth-child(n + 7):nth-child(-n + 9),
+.sudoku-rows > .row:nth-child(n + 4):nth-child(-n + 6) .cell:nth-child(n + 4):nth-child(-n + 6),
+.sudoku-rows > .row:nth-child(n + 7):nth-child(-n + 9) .cell:nth-child(n + 1):nth-child(-n + 3),
+.sudoku-rows > .row:nth-child(n + 7):nth-child(-n + 9) .cell:nth-child(n + 7):nth-child(-n + 9),
+#answer-area > .row:nth-child(n + 1):nth-child(-n + 4) .cell:nth-child(n + 1):nth-child(-n + 3),
+#answer-area > .row:nth-child(n + 1):nth-child(-n + 4) .cell:nth-child(n + 7):nth-child(-n + 9),
+#answer-area > .row:nth-child(n + 5):nth-child(-n + 7) .cell:nth-child(n + 4):nth-child(-n + 6),
+#answer-area > .row:nth-child(n + 8):nth-child(-n + 10) .cell:nth-child(n + 1):nth-child(-n + 3),
+#answer-area > .row:nth-child(n + 8):nth-child(-n + 10) .cell:nth-child(n + 7):nth-child(-n + 9){
     background-color: #BFBFBF;
 }
 
 /* unable 설정 */
 .unable{
     text-align: center;
+}
+
+#btn-area{
+    display: flex;
+    flex-flow: row;
+    gap: 30px;
+}
+
+#answer-area{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
