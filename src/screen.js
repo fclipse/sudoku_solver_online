@@ -13,7 +13,7 @@ function makeSudokuTiles(parentDiv){
         for(let j = 0; j < 9; j++){
             const colDiv = document.createElement('input');
             colDiv.classList.add('cell');
-            colDiv.type = 'text';
+            colDiv.type = 'number';
             colDiv.id = `col-${j + 1}`;
             colDiv.maxLength = '1';
             rowDiv.appendChild(colDiv);
@@ -43,6 +43,8 @@ inputCellList.forEach((cell, index)=>{
             
             // 추출한 값으로 input 요소의 값을 업데이트
             event.target.value = sanitizedValue;
+
+            // cell.value = event.target.value;
         }
 
         // 입력시 다음 cell로 focus

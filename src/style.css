@@ -21,7 +21,7 @@ input.cell{
     width: 100px;
     height: 60px;
 }
-
+/* sudoku 영역 row, column 설정 */
 .sudoku-rows{
     display:flex;
     flex-flow: column;
@@ -34,6 +34,22 @@ input.cell{
     flex-flow: row;
     justify-content: center;
     align-items: center;
+}
+
+.cell{
+    text-align: center;
+}
+/* 입력 칸 옆에 증감 화살표 제거 */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /* 영역별로 배경 회색으로 칠해줌 */
