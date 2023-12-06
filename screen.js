@@ -1,25 +1,31 @@
 // 스도쿠 입력칸 생성
 const rows = document.querySelector('.sudoku-rows');
 
-for(let i = 0; i < 9; i++){
-    const rowDiv = document.createElement('div');
-    rowDiv.classList.add('row');
-    rowDiv.id = `row-${i+1}`;
+makeSudokuTiles(rows);
 
-    for(let j = 0; j < 9; j++){
-        const colDiv = document.createElement('input');
-        colDiv.classList.add('cell');
-        colDiv.type = 'text';
-        colDiv.id = `col-${j + 1}`;
-        colDiv.maxLength = '1';
-        rowDiv.appendChild(colDiv);
+// parentDiv에 9*9 sudoku input을 만들어 넣어 주는 함수
+function makeSudokuTiles(parentDiv){
+    for(let i = 0; i < 9; i++){
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('row');
+        rowDiv.id = `row-${i+1}`;
+    
+        for(let j = 0; j < 9; j++){
+            const colDiv = document.createElement('input');
+            colDiv.classList.add('cell');
+            colDiv.type = 'text';
+            colDiv.id = `col-${j + 1}`;
+            colDiv.maxLength = '1';
+            rowDiv.appendChild(colDiv);
+        }
+        parentDiv.appendChild(rowDiv);
     }
-    rows.appendChild(rowDiv);
 }
 
 // 입력칸엔 1~9 사이의 입력만 들어오도록 설정
 const inputCellList = document.querySelectorAll('.cell');
 inputCellList.forEach((cell, index)=>{
+    // 값 입력시 1~9 사이 정수만 입력받음 / 다음 cell로 자동으로 이동하는 기능 추가
     cell.addEventListener('input', (event)=>{
         // 입력된 값 얻기
         let inputValue = event.target.value;
@@ -41,6 +47,22 @@ inputCellList.forEach((cell, index)=>{
 
         // 입력시 다음 cell로 focus
         if(inputValue.length === cell.maxLength && typeof inputCellList[index + 1] !== 'undefined'){
+            inputCellList[index + 1].focus();
+        }
+    });
+
+    // 화살표 키로 상하좌우로 이동할 수 있도록 설정
+    cell.addEventListener('keydown', (event)=>{
+        let r = Math.floor(index / 9);
+        let c = index % 9;
+
+        if(event.key === 'ArrowUp' && index >= 9){
+            inputCellList[index - 9].focus();
+        }else if(event.key === 'ArrowDown' && index <= 71){
+            inputCellList[index + 9].focus();
+        }else if(event.key === 'ArrowLeft' && index % 9 > 0){
+            inputCellList[index - 1].focus();
+        }else if(event.key === 'ArrowRight' && index % 9 < 8){
             inputCellList[index + 1].focus();
         }
     });
