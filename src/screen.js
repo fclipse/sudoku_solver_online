@@ -15,7 +15,7 @@ function makeSudokuTiles(parentDiv){
             colDiv.classList.add('cell');
             colDiv.type = 'number';
             colDiv.id = `col-${j + 1}`;
-            colDiv.maxLength = '1';
+            colDiv.maxLength = 1;
             rowDiv.appendChild(colDiv);
         }
         parentDiv.appendChild(rowDiv);
