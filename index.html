@@ -16,16 +16,21 @@
     
     <!--제출 버튼-->
     <div id="main">
-        <input type="color" value="Solve!">
+        <input type="color">
+        <input type="file" id="fileInput">
 
         <div class="sudoku-rows"></div>
 
-        <input id="solve" type="button" value="Solve!">
+        <div>
+            <input id="solve" type="button" value="Solve!">
+            <input id="clear" type="button" value="Clear Values">
+        </div>
         <div id="answer-area"></div>
     </div>
 
     <!--소스 파일-->
     <script src="screen.js"></script>
+    <script src="loadFile.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
