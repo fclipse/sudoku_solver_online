@@ -2,7 +2,8 @@
 const len = 9;
 const blen = 3; // 블록 길이 설정
 const answer_area = document.querySelector('#answer-area');
-
+const sudoku_rows = document.querySelector('.sudoku-rows');
+const cellList = sudoku_rows.querySelectorAll('.cell');
 
 // initialize arrays
 let user_array = [];
@@ -15,11 +16,11 @@ for(let i = 0; i < 9; i++){
 // solve 버튼 눌렀을 때 스도쿠 풀리게 설정
 document.querySelector('#solve').addEventListener('click', ()=>{
     // answer area 초기화
-    answer_area.innerHTML = ``;
-
+    answer_area.innerHTML = `<h1>Solving...</h1>`;
+    
     // 입력된 값들 배열에 가져옴
     init_array();
-
+    
     // 처음부터 불가능한 값이 입력되었는지 확인
     for(let i = 0; i < len; i++){
         for(let j = 0; j < len; j++){
@@ -30,14 +31,14 @@ document.querySelector('#solve').addEventListener('click', ()=>{
             }
         }
     }
-
+    
     // 입력된 스도쿠의 해를 구함
     let result = solve_sudoku(0, 0);
     if(!result){
         show_unsolvable();
         return;
     }
-
+    
     // 구한 정답을 출력함
     show_solved();
 });
@@ -45,10 +46,11 @@ document.querySelector('#solve').addEventListener('click', ()=>{
 // 구한 해를 출력하는 함수
 function show_solved(){
     // console.log(sudoku_array);
+    answer_area.innerHTML = `<h1>Answer Values</h1>`;
     makeSudokuTiles(answer_area);
     const answer_cellList = answer_area.querySelectorAll('.cell');
     answer_cellList.forEach((cell, index)=>{
-        cell.value = sudoku_array[Math.floor(index / 9)][index % 9];
+        cell.value = sudoku_array[parseInt(index / 9)][index % 9];
     });
 }
 
@@ -59,7 +61,6 @@ function show_unsolvable(){
 
 // 입력된 값들 배열에 가져옴
 function init_array() {
-    const cellList = document.querySelectorAll('.cell');
     cellList.forEach((cell, index) => {
         let r = parseInt(index / 9);
         let c = index % 9;
@@ -101,7 +102,7 @@ function solve_sudoku(r, c){
 
 // 해당 칸에 value가 들어갈 수 있는지 확인해주는 함수
 // 0 <= r, c <= 8
-// O(1)
+// O(1) ~= O(27)
 function checkValueAvailable(r, c, value){
     // 가로세로 확인
     for(let i = 0; i < len; i++){
@@ -121,10 +122,8 @@ function checkValueAvailable(r, c, value){
     return true;
 }
 
-// 버튼 눌렀을 때 sudoku 내 모든 숫자를 지워주는 프로그램
+// clear 버튼 눌렀을 때 sudoku 내 모든 숫자를 지워주는 프로그램
 document.querySelector('#clear').addEventListener('click', ()=>{
-    const sudoku_rows = document.querySelector('.sudoku-rows');
-    const cellList = sudoku_rows.querySelectorAll('.cell');
     cellList.forEach((cell)=>{
         cell.value = ``;
     });
