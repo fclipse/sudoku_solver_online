@@ -3,8 +3,14 @@ const fileInput = document.getElementById('fileInput');
 
 // input 요소에 change 이벤트 리스너 등록
 fileInput.addEventListener('change', function(event) {
+    // 적절한 파일이 아닐 경우 return
+    if(!validFileType(event.target.files[0])){
+        alert('형식에 맞지 않는 파일입니다.');
+        return;
+    }
     // 선택된 파일 가져오기
     const file = event.target.files[0];
+
 
     // FileReader 객체 생성
     const reader = new FileReader();
@@ -35,3 +41,13 @@ function parseCSV(csvData) {
         
     });
 }
+
+// 파일이 적절한 type인지 validate해주는 함수
+function validFileType(file){
+    return fileTypes.includes(file.type);
+}
+// filetype 명시
+const fileTypes = [
+    "text/plain",
+    "text/csv"
+]
