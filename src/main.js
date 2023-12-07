@@ -56,7 +56,7 @@ function show_solved(){
 
 // 해를 구하지 못할 경우, 해당 안내문을 띄움.
 function show_unsolvable(){
-    answer_area.innerHTML = `<h1 class="unable">Unable to solve sudoku.</br>Please enter different Value.</h1>`
+    answer_area.innerHTML = `<h1 class="unable">스도쿠를 해결할 수 없습니다.</br>다른 값을 입력해 주세요.</br></br>Unable to solve sudoku.</br>Please enter different Value.</h1>`
 }
 
 // 입력된 값들 배열에 가져옴
