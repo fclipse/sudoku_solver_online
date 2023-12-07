@@ -9,16 +9,18 @@ function makeSudokuTiles(parentDiv){
         const rowDiv = document.createElement('div');
         rowDiv.classList.add('row');
         rowDiv.id = `row-${i+1}`;
-    
+        
         for(let j = 0; j < 9; j++){
-            const colDiv = document.createElement('input');
-            colDiv.classList.add('cell');
-            colDiv.type = 'number';
-            colDiv.id = `col-${j + 1}`;
-            colDiv.maxLength = 1;
-            rowDiv.appendChild(colDiv);
+            rowDiv.innerHTML += `<input id="col-${j + 1}" class="cell" type="number" pattern="\d*" maxlength=1 oninput="maxLengthCheck(this)">`;
         }
         parentDiv.appendChild(rowDiv);
+    }
+}
+
+// 입력 maxLength check하는 함수
+function maxLengthCheck(object){
+    if (object.value.length > object.maxLength){
+        object.value = object.value.slice(0, object.maxLength);
     }
 }
 
