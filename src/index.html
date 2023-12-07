@@ -13,14 +13,27 @@
         <h1>Sudoku Solver</h1>
         <h3>Made by Hansj</h3>
         <h3>설명</h3>
-        <p>csv형식으로 된 파일을 업로드하거나 직접 값을 입력한 후 solve 버튼을 누르세요!</p>
+        <ul>
+            <li>빈 칸에 스도쿠에 적혀있는 1-9 사이의 숫자를 입력하세요.</li>
+            <li>0을 입력하면 다음 칸으로 넘어갑니다.</li>
+            <li>파일 업로드는 .csv 또는 .txt파일만 가능합니다.</li>
+            <li><a href="https://github.com/siejwkaodj/sudoku_solver_online/tree/main/sudoku_examples">파일 형식</a>은 다음 링크를 참고해주세요.</li>
+        </ul>
     </div>
     <!--스도쿠 입력 몸체-->
     
     <!--제출 버튼-->
     <div id="main">
         <!-- <input type="color"> -->
-        <input type="file" id="fileInput">
+        <div id="file-wrapper">
+            <label id="file">
+                파일 선택
+                <input type="file" id="fileInput" accept=".txt, .csv" opacity=0>
+            </label>
+            <div id="file-info">
+
+            </div>
+        </div>
 
         <div class="sudoku-rows"></div>
 
