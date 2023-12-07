@@ -2,8 +2,8 @@
 const len = 9;
 const blen = 3; // 블록 길이 설정
 const answer_area = document.querySelector('#answer-area');
-const sudoku_rows = document.querySelector('.sudoku-rows');
-const cellList = sudoku_rows.querySelectorAll('.cell');
+// const sudoku_rows = document.querySelector('.sudoku-rows');
+// const cellList = sudoku_rows.querySelectorAll('.cell');
 
 // initialize arrays
 let user_array = [];
@@ -64,8 +64,14 @@ function init_array() {
     cellList.forEach((cell, index) => {
         let r = parseInt(index / 9);
         let c = index % 9;
-        sudoku_array[r][c] = cell.value - '0';
-        user_array[r][c] = cell.value - '0';
+
+        if(cell.value){
+            sudoku_array[r][c] = cell.value - '0';
+            user_array[r][c] = cell.value - '0';
+        }else{
+            sudoku_array[r][c] = 0;
+            user_array[r][c] = 0;
+        }
     });
 }
 
