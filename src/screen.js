@@ -11,7 +11,7 @@ function makeSudokuTiles(parentDiv){
         rowDiv.id = `row-${i+1}`;
         
         for(let j = 0; j < 9; j++){
-            rowDiv.innerHTML += `<input id="col-${j + 1}" class="cell" type="number" pattern="\d*" maxlength=1 oninput="maxLengthCheck(this)">`;
+            rowDiv.innerHTML += `<input id="col-${j + 1}" class="cell" type="tel" pattern="\d*" maxlength=1 oninput="maxLengthCheck(this)">`;
         }
         parentDiv.appendChild(rowDiv);
     }
@@ -57,17 +57,27 @@ inputCellList.forEach((cell, index)=>{
 
     // 화살표 키로 상하좌우로 이동할 수 있도록 설정
     cell.addEventListener('keydown', (event)=>{
-        let r = parseInt(index / 9);
-        let c = index % 9;
+        // console.log(event);
 
-        if(event.key === 'ArrowUp' && index >= 9){
-            inputCellList[index - 9].focus();
-        }else if(event.key === 'ArrowDown' && index <= 71){
-            inputCellList[index + 9].focus();
+        if(event.key === 'ArrowUp'){
+            event.preventDefault(); // 기본 동작 막기
+            if(index >= 9){
+                inputCellList[index - 9].focus();
+            }
+        }else if(event.key === 'ArrowDown'){
+            event.preventDefault(); // 기본 동작 막기
+            if(index <= 71){
+                inputCellList[index + 9].focus();
+            }
         }else if(event.key === 'ArrowLeft' && index % 9 > 0){
             inputCellList[index - 1].focus();
         }else if(event.key === 'ArrowRight' && index % 9 < 8){
             inputCellList[index + 1].focus();
+        }else if(event.key === 'Backspace' && index > 0){
+            // 지우기 누르면 현재 칸 지워지고 이전 칸으로 커서 이동
+            event.preventDefault();
+            inputCellList[index].value = ``;
+            inputCellList[index - 1].focus();
         }
     });
 });
