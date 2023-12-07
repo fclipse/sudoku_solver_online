@@ -1,7 +1,11 @@
-// 스도쿠 입력칸 생성
-const rows = document.querySelector('.sudoku-rows');
+// 전역 요소 설정
+const sudoku_rows = document.querySelector('.sudoku-rows');
 
-makeSudokuTiles(rows);
+// 스도쿠 입력칸 생성
+makeSudokuTiles(sudoku_rows);
+
+// 입력칸 생성 후 cell 정의 
+const cellList = sudoku_rows.querySelectorAll('.cell');
 
 // parentDiv에 9*9 sudoku input을 만들어 넣어 주는 함수
 function makeSudokuTiles(parentDiv){
@@ -25,8 +29,7 @@ function maxLengthCheck(object){
 }
 
 // 입력칸엔 1~9 사이의 입력만 들어오도록 설정
-const inputCellList = document.querySelectorAll('.cell');
-inputCellList.forEach((cell, index)=>{
+cellList.forEach((cell, index)=>{
     // 값 입력시 1~9 사이 정수만 입력받음 / 다음 cell로 자동으로 이동하는 기능 추가
     cell.addEventListener('input', (event)=>{
         // 입력된 값 얻기
@@ -50,8 +53,8 @@ inputCellList.forEach((cell, index)=>{
         }
 
         // 입력시 다음 cell로 focus
-        if(inputValue.length === cell.maxLength && typeof inputCellList[index + 1] !== 'undefined'){
-            inputCellList[index + 1].focus();
+        if(inputValue.length === cell.maxLength && typeof cellList[index + 1] !== 'undefined'){
+            cellList[index + 1].focus();
         }
     });
 
@@ -62,22 +65,22 @@ inputCellList.forEach((cell, index)=>{
         if(event.key === 'ArrowUp'){
             event.preventDefault(); // 기본 동작 막기
             if(index >= 9){
-                inputCellList[index - 9].focus();
+                cellList[index - 9].focus();
             }
         }else if(event.key === 'ArrowDown'){
             event.preventDefault(); // 기본 동작 막기
             if(index <= 71){
-                inputCellList[index + 9].focus();
+                cellList[index + 9].focus();
             }
         }else if(event.key === 'ArrowLeft' && index % 9 > 0){
-            inputCellList[index - 1].focus();
+            cellList[index - 1].focus();
         }else if(event.key === 'ArrowRight' && index % 9 < 8){
-            inputCellList[index + 1].focus();
+            cellList[index + 1].focus();
         }else if(event.key === 'Backspace' && index > 0){
             // 지우기 누르면 현재 칸 지워지고 이전 칸으로 커서 이동
             event.preventDefault();
-            inputCellList[index].value = ``;
-            inputCellList[index - 1].focus();
+            cellList[index].value = ``;
+            cellList[index - 1].focus();
         }
     });
 });
