@@ -69,4 +69,4 @@ function validFileType(file){
 const fileTypes = [
     "text/plain",
     "text/csv"
-]
+];
