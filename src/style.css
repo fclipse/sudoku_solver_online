@@ -8,7 +8,7 @@ input.cell{
     border-width: 1px;
     border-radius: 3px;
 }
-
+/* 메인 화면 설정 */
 #main{
     display: flex;
     flex-flow: column;
@@ -17,10 +17,45 @@ input.cell{
 
     gap: 30px;
 }
+/* solve, clear 버튼 설정 */
+#file > input{
+    opacity: 0;
+}
+#file, #file-wrapper{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+#file{
+    width: auto;
+    height: auto;
+
+    background-color: #F0F0F0;
+    color: #5C85FF;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    transition-duration: 300ms;
+}
 #solve, #clear{
     width: 100px;
     height: 60px;
+
+    border: solid 0px;
+    border-radius: 10px;
+    outline: none;
+
+    color: #5C85FF;
+    transition-duration: 300ms;
 }
+#file:hover, #solve:hover, #clear:hover{
+    background-color: #ABABAB;
+}
+
 /* sudoku 영역 row, column 설정 */
 .sudoku-rows{
     display:flex;
@@ -29,14 +64,17 @@ input.cell{
     align-items: center;
 }
 
+/* 스도쿠 입력 행 설정 */
 .row{
     display: flex;
     flex-flow: row;
     justify-content: center;
     align-items: center;
 }
-
+/* 스도쿠 각 입력칸 설정 */
 .cell{
+    outline: none;
+
     text-align: center;
 }
 /* 입력 칸 옆에 증감 화살표 제거 */
@@ -46,7 +84,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;

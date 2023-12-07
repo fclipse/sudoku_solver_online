@@ -1,5 +1,7 @@
 // input 요소 가져오기
 const fileInput = document.getElementById('fileInput');
+const fileDiv = document.querySelector('#file-wrapper');
+const fileInfo = document.querySelector('#file-info');
 
 // 파일 선택시 eventlistener
 fileInput.addEventListener('change', function(event) {
@@ -16,6 +18,7 @@ fileInput.addEventListener('change', function(event) {
     // 선택된 파일 가져오기
     const file = event.target.files[0];
 
+    // console.log(file.type, file.name, file.size);
 
     // FileReader 객체 생성
     const reader = new FileReader();
@@ -25,6 +28,7 @@ fileInput.addEventListener('change', function(event) {
         // CSV 형식으로 파싱
         const csvData = e.target.result;
         parseCSV(csvData);
+        fileInfo.innerText = `name : ${file.name}`;
     };
 
     // 파일 읽기 시작
